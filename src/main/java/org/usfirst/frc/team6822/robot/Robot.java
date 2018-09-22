@@ -13,15 +13,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import org.usfirst.frc.team6822.robot.commands.AutoDriveControl;
-import org.usfirst.frc.team6822.robot.commands.AutoIntake;
-import org.usfirst.frc.team6822.robot.commands.AutoLinear;
-import org.usfirst.frc.team6822.robot.commands.LinearSlideControl;
-import org.usfirst.frc.team6822.robot.commands.TeleOpCommands;
-import org.usfirst.frc.team6822.robot.subsystems.Claws;
-import org.usfirst.frc.team6822.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team6822.robot.subsystems.Intake;
-import org.usfirst.frc.team6822.robot.subsystems.LinearSlide;
+// import org.usfirst.frc.team6822.robot.commands.AutoDriveControl;
+// import org.usfirst.frc.team6822.robot.commands.AutoIntake;
+// import org.usfirst.frc.team6822.robot.commands.AutoLinear;
+// import org.usfirst.frc.team6822.robot.commands.LinearSlideControl;
+// import org.usfirst.frc.team6822.robot.commands.TeleOpCommands;
+// import org.usfirst.frc.team6822.robot.subsystems.Claws;
+// import org.usfirst.frc.team6822.robot.subsystems.DriveTrain;
+// import org.usfirst.frc.team6822.robot.subsystems.Intake;
+// import org.usfirst.frc.team6822.robot.subsystems.LinearSlide;
+
+import org.usfirst.frc.team6822.robot.commands.*;
+import org.usfirst.frc.team6822.robot.subsystems.*;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoMode;
@@ -49,6 +52,7 @@ public static OI m_oi;
 	public static LinearSlide m_linearslide;
 	public static DriveTrain m_drivetrain;
 	public static Claws m_claws;
+	public static Pneumatics m_pneumatics;
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -70,11 +74,14 @@ public static OI m_oi;
 		//theCamera.setVideoMode(VideoMode.)
 		
 		//CameraServer.getInstance().
+
 		m_oi = new OI();
 		m_intake = new Intake();
 		m_linearslide = new LinearSlide();
 		m_drivetrain = new DriveTrain();
 		m_claws = new Claws();
+		m_pneumatics = new Pneumatics();
+
 		//m_chooser.addDefault("Default Auto", new AutoCommand());//to be done by Esha
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		//SmartDashboard.putData("Auto mode", m_chooser)
@@ -176,6 +183,9 @@ public static OI m_oi;
 		boolean isStupid = true;
 		if(isStupid)//stupid plan
 		{
+			/*
+			Record commands beforehand and run them
+			*/
 			try {
 				BufferedReader bR = new BufferedReader(new FileReader("/home/lvuser/recorded."+position));
 				String readingTemp;
@@ -211,6 +221,7 @@ public static OI m_oi;
 			//System.out.println(gameData);
 			if(gameData.length() > 0)
 			{
+				
 				if(LOCATION==1)//LEFT
 				{
 					if(gameData.charAt(0) == 'L')
@@ -522,10 +533,18 @@ public static OI m_oi;
 		}
 	}
 
+	@Override
+	public void testInit(){
+		//testing pneumatics
+
+	}
+
 	/**
 	 * This function is called periodically during test mode.
 	 */
 	@Override
 	public void testPeriodic() {
+		Robot.m_pneumatics.TestPneumatics("Forward");
+		Robot.m_pneumatics.TestPneumatics("Reverse");
 	}
 }

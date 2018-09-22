@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team6822.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -36,6 +37,9 @@ public class RobotMap {
 	public static int intakeRightSpot = 9;
 	public static int leftClawSpot = 4;
 	public static int rightClawSpot = 5;
+
+	public static int solenoid1Spot = 1;
+	public static int solenoid2Spot = 2;
 	
 	//public static int sonicPlace = 1;
 	
@@ -57,6 +61,9 @@ public class RobotMap {
 	//public static String gameData;
 	
 	public static DifferentialDrive diffdrive;
+
+	public static DoubleSolenoid clawSolenoid;
+
 	public static void init()
 	{
 		//gameData = 
@@ -73,11 +80,13 @@ public class RobotMap {
 		diffdrive = new DifferentialDrive(leftDrive,rightDrive);
 		intakeleft = new VictorSP(intakeLeftSpot);
 		intakeright = new VictorSP(intakeRightSpot);
+		clawSolenoid = new DoubleSolenoid(solenoid1Spot, solenoid2Spot);
 		
 		diffdrive.setSafetyEnabled(false);
 		linear.setSafetyEnabled(false);
 		intakeleft.setSafetyEnabled(false);
 		intakeright.setSafetyEnabled(false);
+
 		
 		//drop1 = new VictorSP(drop1spot);
 		//drop2 = new VictorSP(drop2spot);
