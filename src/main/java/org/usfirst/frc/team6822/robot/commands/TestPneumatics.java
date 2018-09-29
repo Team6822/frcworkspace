@@ -20,7 +20,7 @@ public class TestPneumatics extends InstantCommand {
    */
 
   String state;
-  public PneumaticsControl(String state) {
+  public TestPneumatics(String state) {
     super();
     requires(Robot.m_pneumatics);
     this.state = state;
@@ -31,7 +31,7 @@ public class TestPneumatics extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    setState(state);
+    Robot.m_pneumatics.setState(state);
   }
 
 }

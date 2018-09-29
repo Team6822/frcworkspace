@@ -536,7 +536,8 @@ public static OI m_oi;
 	@Override
 	public void testInit(){
 		//testing pneumatics
-
+		new TestPneumatics("Forward").start();
+		new TestPneumatics("Reverse").start();
 	}
 
 	/**
@@ -544,7 +545,6 @@ public static OI m_oi;
 	 */
 	@Override
 	public void testPeriodic() {
-		Robot.m_pneumatics.TestPneumatics("Forward");
-		Robot.m_pneumatics.TestPneumatics("Reverse");
+		Scheduler.getInstance().run();
 	}
 }
