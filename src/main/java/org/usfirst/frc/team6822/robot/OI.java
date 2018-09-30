@@ -24,6 +24,18 @@ public class OI {
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber)
 
+	/*
+	Joystick 1:
+	1 = x
+	2 = a
+	3 = b
+	4 = y
+	5 = lb
+	6 = rb
+	7 = lt
+	8 = rt
+	*/
+
 	public Joystick xbox = new Joystick(0);
 	public Joystick joystick = new Joystick(1);//also an xbox
 	public Button intakein = new JoystickButton(joystick, 5);
