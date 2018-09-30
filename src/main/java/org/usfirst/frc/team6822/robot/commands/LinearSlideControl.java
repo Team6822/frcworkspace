@@ -23,7 +23,11 @@ public class LinearSlideControl extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//\System.out.println(Robot.m_oi.joystick.getRawAxis(Robot.m_oi.slideAxis)+" "+((1-Robot.m_oi.joystick.getRawAxis(Robot.m_oi.slideAxis))*Robot.m_oi.throttleSlide));
-	    	Robot.m_linearslide.move((Robot.m_oi.joystick.getRawAxis(Robot.m_oi.slideAxis)+Robot.m_oi.tensionSlide-Robot.m_oi.joystick.getRawAxis(Robot.m_oi.otherSlideAxis)*0.5)*Robot.m_oi.throttleSlide);
+            Robot.m_linearslide.move(
+                (Robot.m_oi.joystick.getRawAxis(Robot.m_oi.slideAxis)
+                + Robot.m_oi.tensionSlide
+                - Robot.m_oi.joystick.getRawAxis(Robot.m_oi.otherSlideAxis) * 0.5)
+                * Robot.m_oi.throttleSlide);
     	
     }
 
