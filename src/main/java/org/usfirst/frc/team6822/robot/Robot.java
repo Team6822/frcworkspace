@@ -53,7 +53,7 @@ public static OI m_oi;
 	public static DriveTrain m_drivetrain;
 	public static Claws m_claws;
 	public static Pneumatics m_pneumatics;
-	public static PLatform m_platform;
+	public static Platform m_platform;
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 

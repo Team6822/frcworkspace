@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6822.robot.commands;
 
+import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6822.robot.Robot;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -10,7 +11,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class PlatformControl extends Command {
 
 	
-    public PLatformControl() {
+    public PlatformControl() {
         requires(Robot.m_platform);
     }
 
