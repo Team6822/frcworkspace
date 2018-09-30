@@ -28,6 +28,11 @@ public class RobotMap {
 	//can
 	public static int talon1Intake = 1;
 	//public static int talon2Intake = 2;
+	public static int i = 1;
+	public static int ii = 2;
+
+	public static int j = 1;
+	public static int jj = 2;
 	//PWM
 	public static int victorLinear = 3;
 	//public static int victorClimber = 5;
@@ -64,6 +69,9 @@ public class RobotMap {
 
 	public static DoubleSolenoid clawSolenoid;
 
+	public static DoubleSolenoid Lplatform;
+	public static DoubleSolenoid Rplatform;
+
 	public static void init()
 	{
 		//gameData = 
@@ -81,6 +89,9 @@ public class RobotMap {
 		intakeleft = new VictorSP(intakeLeftSpot);
 		intakeright = new VictorSP(intakeRightSpot);
 		clawSolenoid = new DoubleSolenoid(solenoid1Spot, solenoid2Spot);
+		
+		Lplatform = new DoubleSolenoid(i, ii);
+		Rplatform = new DoubleSolenoid(j, jj);
 		
 		diffdrive.setSafetyEnabled(false);
 		linear.setSafetyEnabled(false);
