@@ -42,22 +42,29 @@ public class OI {
 	public Button intakeout = new JoystickButton(joystick,6);
 	public Button boost = new JoystickButton(xbox,6);
 	public Button unthrottleclaw = new JoystickButton(joystick,2);
+
+
 	/*public Button slideup = new JoystickButton(joystick,6);
 	public Button slidedown = new JoystickButton(joystick,4);*/
 	
 	//public int leftaxis = 1;
 	//public int rightaxis = 5;
-	public int lTriggerAxis = 2;
-	public int rTriggerAxis = 3;
-	public int lClawAxis = 4;
-	public int rClawAxis = 0;
-	public int turnAxis = 0;
-	public int slideAxis = 3;
-	public int otherSlideAxis = 2;
-	
+
+
+	//joystick 0 (variable xbox) mappings:
+	public int lTriggerAxis = 2; // left wheels drivetrain
+	public int rTriggerAxis = 3; // right wheels drivetrain
+	public int turnAxis = 0; // input for turning in the drivetrain (multiplied by some other things)
+
+	//joystick 1 mappings:
+	public int slideAxis = 3; // when pressed, moves the slide up (it's a button, not joystick)
+	public int otherSlideAxis = 2; // when pressed, moves the slide down
+	public int lClawAxis = 4; // left side claw (note that it is useful to be able to control left and right claws separately)
+	public int rClawAxis = 0; // right side claw
+
 	public double throttleBoost = 1.0;
 	public double throttleDrive = 0.45;
-	public double throttleTurn = 0.5;
+	public double throttleTurn = 0.5; //turning on 
 	public double throttleSlide = -0.4;//0.35;
 	public double throttleIntakeIn = -0.5;
 	public double throttleIntakeOut = 0.5;
