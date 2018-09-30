@@ -42,6 +42,7 @@ public class OI {
 	public Button intakeout = new JoystickButton(joystick,6);
 	public Button boost = new JoystickButton(xbox,6);
 	public Button unthrottleclaw = new JoystickButton(joystick,2);
+	public Button platbutt = new Button(3);
 	/*public Button slideup = new JoystickButton(joystick,6);
 	public Button slidedown = new JoystickButton(joystick,4);*/
 	
