@@ -23,23 +23,20 @@ public class Platform extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    
-    public void activate(String state)
-    {
-        public void setState(String state){
-            if(state == "Off"){
-              Lplat.set(DoubleSolenoid.Value.kOff);
-              Rplat.set(DoubleSolenoid.Value.kOff);
-            }
-            else if(state == "Forward"){
-              Lplat.set(DoubleS.olenoid.Value.kForward);
-              Rplat.set(DoubleSolenoid.Value.kForward);
-            }
-            else if(state == "Reverse"){
-                Lplat.set(DoubleSolenoid.Value.kReverse);
-                Rplat.set(DoubleSolenoid.Value.kReverse);
-            }
-          }
+
+    public void setState(String state){
+        if(state == "Off"){
+            Lplat.set(DoubleSolenoid.Value.kOff);
+            Rplat.set(DoubleSolenoid.Value.kOff);
+        }
+        else if(state == "Forward"){
+            Lplat.set(DoubleSolenoid.Value.kForward);
+            Rplat.set(DoubleSolenoid.Value.kForward);
+        }
+        else if(state == "Reverse"){
+            Lplat.set(DoubleSolenoid.Value.kReverse);
+            Rplat.set(DoubleSolenoid.Value.kReverse);
+        }
     }
 }
 
