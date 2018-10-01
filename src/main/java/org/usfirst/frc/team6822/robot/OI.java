@@ -35,13 +35,15 @@ public class OI {
 	
 	//public int leftaxis = 1;
 	//public int rightaxis = 5;
-	public int lTriggerAxis = 2;
-	public int rTriggerAxis = 3;
-	public int lClawAxis = 4;
-	public int rClawAxis = 0;
-	public int turnAxis = 0;
-	public int slideAxis = 3;
-	public int otherSlideAxis = 2;
+	//Primary/Xbox controller mappings
+	public int lTriggerAxis = 2; // for drivetrain- the left side
+	public int rTriggerAxis = 3; // for drivetrain- the right side
+	public int turnAxis = 0; // for drivetrain
+	// Secondary/Joystick controller mappings
+	public int lClawAxis = 4; // for claws (replaced by pneumatics?)- left side
+	public int rClawAxis = 0; // for claws (replaced by pneumatics?)- right side
+	public int slideAxis = 3; // for linear slide- up
+	public int otherSlideAxis = 2; // for linear slide- down
 	
 	public double throttleBoost = 1.0;
 	public double throttleDrive = 0.45;

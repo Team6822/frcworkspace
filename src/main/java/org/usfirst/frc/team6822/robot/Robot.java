@@ -512,7 +512,9 @@ public static OI m_oi;
 		{
 			pW.println((System.currentTimeMillis()-timeAtZero)+","
 		+(Robot.m_oi.xbox.getRawAxis(Robot.m_oi.rTriggerAxis)-Robot.m_oi.xbox.getRawAxis(Robot.m_oi.lTriggerAxis))+","
-		+Robot.m_oi.xbox.getRawAxis(Robot.m_oi.turnAxis)+","+
+		+Robot.m_oi.xbox.getRawAxis(Robot.m_oi.
+		
+		)+","+
 		((Robot.m_oi.joystick.getRawAxis(Robot.m_oi.slideAxis)+Robot.m_oi.tensionSlide-Robot.m_oi.joystick.getRawAxis(Robot.m_oi.otherSlideAxis)*0.2)*Robot.m_oi.throttleSlide)+","+
 		Robot.m_oi.joystick.getRawAxis(Robot.m_oi.lClawAxis)+","+
 		Robot.m_oi.joystick.getRawAxis(Robot.m_oi.rClawAxis)+","+
