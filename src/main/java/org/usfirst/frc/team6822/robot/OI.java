@@ -24,17 +24,37 @@ public class OI {
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber)
 
+	/*
+	Joystick 1:
+	1 = x
+	2 = a
+	3 = b
+	4 = y
+	5 = lb
+	6 = rb
+	7 = lt
+	8 = rt
+	*/
+
 	public Joystick xbox = new Joystick(0);
+	public Button boost = new JoystickButton(xbox,6);
+
 	public Joystick joystick = new Joystick(1);//also an xbox
 	public Button intakein = new JoystickButton(joystick, 5);
 	public Button intakeout = new JoystickButton(joystick,6);
-	public Button boost = new JoystickButton(xbox,6);
 	public Button unthrottleclaw = new JoystickButton(joystick,2);
+<<<<<<< HEAD
+
+
+=======
+	public Button platbutt = new JoystickButton(joystick, 3); //unsure if this is an open port, need to remap
+>>>>>>> df6ac50d56b75aab06e2ff062fc9901645a0bfa9
 	/*public Button slideup = new JoystickButton(joystick,6);
 	public Button slidedown = new JoystickButton(joystick,4);*/
 	
 	//public int leftaxis = 1;
 	//public int rightaxis = 5;
+<<<<<<< HEAD
 	//Primary/Xbox controller mappings
 	public int lTriggerAxis = 2; // for drivetrain- the left side
 	public int rTriggerAxis = 3; // for drivetrain- the right side
@@ -45,9 +65,24 @@ public class OI {
 	public int slideAxis = 3; // for linear slide- up
 	public int otherSlideAxis = 2; // for linear slide- down
 	
+=======
+
+
+	//joystick 0 (variable xbox) mappings:
+	public int lTriggerAxis = 2; // left wheels drivetrain
+	public int rTriggerAxis = 3; // right wheels drivetrain
+	public int turnAxis = 0; // input for turning in the drivetrain (multiplied by some other things)
+
+	//joystick 1 mappings:
+	public int slideAxis = 3; // when pressed, moves the slide up (it's a button, not joystick)
+	public int otherSlideAxis = 2; // when pressed, moves the slide down
+	public int lClawAxis = 4; // left side claw (note that it is useful to be able to control left and right claws separately)
+	public int rClawAxis = 0; // right side claw
+
+>>>>>>> 3114c7699f4dafb19b38005735a46f9d452a357f
 	public double throttleBoost = 1.0;
 	public double throttleDrive = 0.45;
-	public double throttleTurn = 0.5;
+	public double throttleTurn = 0.5; //turning on 
 	public double throttleSlide = -0.4;//0.35;
 	public double throttleIntakeIn = -0.5;
 	public double throttleIntakeOut = 0.5;

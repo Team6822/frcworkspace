@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team6822.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -27,6 +28,11 @@ public class RobotMap {
 	//can
 	public static int talon1Intake = 1;
 	//public static int talon2Intake = 2;
+	public static int i = 1;
+	public static int ii = 2;
+
+	public static int j = 1;
+	public static int jj = 2;
 	//PWM
 	public static int victorLinear = 3;
 	//public static int victorClimber = 5;
@@ -36,6 +42,9 @@ public class RobotMap {
 	public static int intakeRightSpot = 9;
 	public static int leftClawSpot = 4;
 	public static int rightClawSpot = 5;
+
+	public static int solenoid1Spot = 1;
+	public static int solenoid2Spot = 2;
 	
 	//public static int sonicPlace = 1;
 	
@@ -57,6 +66,12 @@ public class RobotMap {
 	//public static String gameData;
 	
 	public static DifferentialDrive diffdrive;
+
+	public static DoubleSolenoid clawSolenoid;
+
+	public static DoubleSolenoid Lplatform;
+	public static DoubleSolenoid Rplatform;
+
 	public static void init()
 	{
 		//gameData = 
@@ -73,11 +88,16 @@ public class RobotMap {
 		diffdrive = new DifferentialDrive(leftDrive,rightDrive);
 		intakeleft = new VictorSP(intakeLeftSpot);
 		intakeright = new VictorSP(intakeRightSpot);
+		clawSolenoid = new DoubleSolenoid(solenoid1Spot, solenoid2Spot);
+		
+		Lplatform = new DoubleSolenoid(i, ii);
+		Rplatform = new DoubleSolenoid(j, jj);
 		
 		diffdrive.setSafetyEnabled(false);
 		linear.setSafetyEnabled(false);
 		intakeleft.setSafetyEnabled(false);
 		intakeright.setSafetyEnabled(false);
+
 		
 		//drop1 = new VictorSP(drop1spot);
 		//drop2 = new VictorSP(drop2spot);

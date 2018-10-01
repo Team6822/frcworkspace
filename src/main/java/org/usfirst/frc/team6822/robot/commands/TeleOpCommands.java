@@ -14,5 +14,6 @@ public class TeleOpCommands extends CommandGroup {
        addParallel(new LinearSlideControl());
        addParallel(new IntakeControl());
        addParallel(new ClawsControl());
+       addParallel(new PlatformControl());
     }
 }
