@@ -523,7 +523,6 @@ public class Robot extends TimedRobot
 		}
 		if(isRecording)
 		{
-<<<<<<< HEAD
 			pW.println(
                 (System.currentTimeMillis() - timeAtZero) + ","
 		        + (Robot.m_oi.xbox.getRawAxis(Robot.m_oi.rTriggerAxis) - Robot.m_oi.xbox.getRawAxis(Robot.m_oi.lTriggerAxis)) + ","
@@ -540,19 +539,6 @@ public class Robot extends TimedRobot
             );
 
 			System.out.println((System.currentTimeMillis() - timeAtZero) + " " + 1000 * 15);
-=======
-			pW.println((System.currentTimeMillis()-timeAtZero)+","
-		+(Robot.m_oi.xbox.getRawAxis(Robot.m_oi.rTriggerAxis)-Robot.m_oi.xbox.getRawAxis(Robot.m_oi.lTriggerAxis))+","
-		+Robot.m_oi.xbox.getRawAxis(Robot.m_oi.
-		
-		)+","+
-		((Robot.m_oi.joystick.getRawAxis(Robot.m_oi.slideAxis)+Robot.m_oi.tensionSlide-Robot.m_oi.joystick.getRawAxis(Robot.m_oi.otherSlideAxis)*0.2)*Robot.m_oi.throttleSlide)+","+
-		Robot.m_oi.joystick.getRawAxis(Robot.m_oi.lClawAxis)+","+
-		Robot.m_oi.joystick.getRawAxis(Robot.m_oi.rClawAxis)+","+
-			(Robot.m_oi.intakein.get()?1.0:0.0)+","+
-		(Robot.m_oi.intakeout.get()?1.0:0.0));
-			System.out.println((System.currentTimeMillis()-timeAtZero )+ " "+ 1000*15);
->>>>>>> d321083db48a49dfe81ca49c536b73ce5182ae13
 		}
 	}
 
