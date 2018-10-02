@@ -43,13 +43,11 @@ public class OI {
 	public Button intakein = new JoystickButton(joystick, 5);
 	public Button intakeout = new JoystickButton(joystick,6);
 	public Button unthrottleclaw = new JoystickButton(joystick,2);
-<<<<<<< HEAD
-
-
-=======
-	public Button platbutt = new JoystickButton(joystick, 3); //unsure if this is an open port, need to remap
->>>>>>> df6ac50d56b75aab06e2ff062fc9901645a0bfa9
-	/*public Button slideup = new JoystickButton(joystick,6);
+    public Button platbutt = new JoystickButton(joystick, 3); // unsure if this is an open port, need to remap
+    public Button gripperButton = new JoystickButton(joystick, 4); // also unsure if open port
+    
+    
+    /*public Button slideup = new JoystickButton(joystick,6);
 	public Button slidedown = new JoystickButton(joystick,4);*/
 	
 	//public int leftaxis = 1;

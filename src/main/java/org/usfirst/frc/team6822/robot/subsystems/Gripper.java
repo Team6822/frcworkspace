@@ -7,6 +7,9 @@
 
 package org.usfirst.frc.team6822.robot.subsystems;
 
+import org.usfirst.frc.team6822.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,9 +19,27 @@ public class Gripper extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+    public DoubleSolenoid LGripper = RobotMap.RGripper;
+	public DoubleSolenoid RGripper = RobotMap.LGripper;
+
+    @Override
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        // setDefaultCommand(new MySpecialCommand());
+    }
+
+    public void setState(String state){
+        if(state == "Off"){
+            LGripper.set(DoubleSolenoid.Value.kOff);
+            RGripper.set(DoubleSolenoid.Value.kOff);
+        }
+        else if(state == "Forward"){
+            LGripper.set(DoubleSolenoid.Value.kForward);
+            RGripper.set(DoubleSolenoid.Value.kForward);
+        }
+        else if(state == "Reverse"){
+            LGripper.set(DoubleSolenoid.Value.kReverse);
+            RGripper.set(DoubleSolenoid.Value.kReverse);
+        }
+    }
 }

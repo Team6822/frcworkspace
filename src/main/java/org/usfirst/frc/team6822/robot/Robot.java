@@ -47,13 +47,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends TimedRobot 
 {
-public static OI m_oi;
+    public static OI m_oi;
 	public static Intake m_intake;
 	public static LinearSlide m_linearslide;
 	public static DriveTrain m_drivetrain;
 	public static Claws m_claws;
-	public static Pneumatics m_pneumatics;
-	public static Platform m_platform;
+    public static Platform m_platform;
+    public static Gripper m_gripper;
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -80,8 +80,9 @@ public static OI m_oi;
 		m_intake = new Intake();
 		m_linearslide = new LinearSlide();
 		m_drivetrain = new DriveTrain();
-		m_claws = new Claws();
-		m_pneumatics = new Pneumatics();
+        m_claws = new Claws();
+        m_platform = new Platform();
+        m_gripper = new Gripper();
 
 		//m_chooser.addDefault("Default Auto", new AutoCommand());//to be done by Esha
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -522,23 +523,27 @@ public static OI m_oi;
 		}
 		if(isRecording)
 		{
-			pW.println((System.currentTimeMillis()-timeAtZero)+","
-		+(Robot.m_oi.xbox.getRawAxis(Robot.m_oi.rTriggerAxis)-Robot.m_oi.xbox.getRawAxis(Robot.m_oi.lTriggerAxis))+","
-		+Robot.m_oi.xbox.getRawAxis(Robot.m_oi.turnAxis)+","+
-		((Robot.m_oi.joystick.getRawAxis(Robot.m_oi.slideAxis)+Robot.m_oi.tensionSlide-Robot.m_oi.joystick.getRawAxis(Robot.m_oi.otherSlideAxis)*0.2)*Robot.m_oi.throttleSlide)+","+
-		Robot.m_oi.joystick.getRawAxis(Robot.m_oi.lClawAxis)+","+
-		Robot.m_oi.joystick.getRawAxis(Robot.m_oi.rClawAxis)+","+
-			(Robot.m_oi.intakein.get()?1.0:0.0)+","+
-		(Robot.m_oi.intakeout.get()?1.0:0.0));
-			System.out.println((System.currentTimeMillis()-timeAtZero )+ " "+ 1000*15);
+			pW.println(
+                (System.currentTimeMillis() - timeAtZero) + ","
+		        + (Robot.m_oi.xbox.getRawAxis(Robot.m_oi.rTriggerAxis) - Robot.m_oi.xbox.getRawAxis(Robot.m_oi.lTriggerAxis)) + ","
+		        + Robot.m_oi.xbox.getRawAxis(Robot.m_oi.turnAxis) + ","
+                + (
+                    (Robot.m_oi.joystick.getRawAxis(Robot.m_oi.slideAxis)
+                    + Robot.m_oi.tensionSlide
+                    - 0.2 * Robot.m_oi.joystick.getRawAxis(Robot.m_oi.otherSlideAxis)
+                ) * Robot.m_oi.throttleSlide) + ","
+                + Robot.m_oi.joystick.getRawAxis(Robot.m_oi.lClawAxis) + ","
+                + Robot.m_oi.joystick.getRawAxis(Robot.m_oi.rClawAxis) + ","
+                + (Robot.m_oi.intakein.get() ? 1.0 : 0.0) + ","
+                + (Robot.m_oi.intakeout.get() ? 1.0 : 0.0)
+            );
+
+			System.out.println((System.currentTimeMillis() - timeAtZero) + " " + 1000 * 15);
 		}
 	}
 
 	@Override
 	public void testInit(){
-		//testing pneumatics
-		new TestPneumatics("Forward").start();
-		new TestPneumatics("Reverse").start();
 	}
 
 	/**
@@ -546,6 +551,5 @@ public static OI m_oi;
 	 */
 	@Override
 	public void testPeriodic() {
-		Scheduler.getInstance().run();
 	}
 }

@@ -17,23 +17,23 @@ public class IntakeControl extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    		Robot.m_intake.moveMotors(0);
+    	Robot.m_intake.moveMotors(0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		if(Robot.m_oi.intakeout.get())
-    		{
-    			Robot.m_intake.moveMotors(Robot.m_oi.throttleIntakeOut);
-    		}
-    		else if(Robot.m_oi.intakein.get())
-    		{
-    			Robot.m_intake.moveMotors(Robot.m_oi.throttleIntakeIn);
-    		}
-    		else
-    		{
-    			Robot.m_intake.moveMotors(0);
-    		}
+    	if(Robot.m_oi.intakeout.get())
+		{
+    		Robot.m_intake.moveMotors(Robot.m_oi.throttleIntakeOut);
+    	}
+    	else if(Robot.m_oi.intakein.get())
+    	{
+    		Robot.m_intake.moveMotors(Robot.m_oi.throttleIntakeIn);
+    	}
+    	else
+    	{
+    		Robot.m_intake.moveMotors(0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

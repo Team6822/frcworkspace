@@ -20,19 +20,9 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	
-	
-	
 	//can
 	public static int talon1Intake = 1;
 	//public static int talon2Intake = 2;
-	public static int i = 1;
-	public static int ii = 2;
-
-	public static int j = 1;
-	public static int jj = 2;
 	//PWM
 	public static int victorLinear = 3;
 	//public static int victorClimber = 5;
@@ -43,38 +33,37 @@ public class RobotMap {
 	public static int leftClawSpot = 4;
 	public static int rightClawSpot = 5;
 
-	public static int solenoid1Spot = 1;
-	public static int solenoid2Spot = 2;
-	
-	//public static int sonicPlace = 1;
-	
-	//public static Ultrasonic sonicSensor;
+	//Solenoids
+	public static int LPlatformFwdPort = 1;
+	public static int LPlatformBkwdPort = 2;
+	public static int RPlatformFwdPort = 3;
+	public static int RPlatformBkwdPort = 4;
+	public static int LGripperFwdPort = 5;
+	public static int LGripperBkwdPort = 6;
+	public static int RGripperFwdPort = 7;
+	public static int RGripperBkwdPort = 8;
 	
 	//motors
 	//public static TalonSRX talon2;
-	public static VictorSP linear;//actually a victorsp
-	public static VictorSP climber;//actually a victorsp
-	public static VictorSP intakeright;//actually a victorspx connected with pwm
+	public static VictorSP linear; // actually a victorsp
+	public static VictorSP climber; // actually a victorsp
+	public static VictorSP intakeright; // actually a victorspx connected with pwm
 	public static VictorSP intakeleft;
 
-	
 	public static Spark leftDrive;
 	public static Spark rightDrive;
 	public static Spark leftClaw;
 	public static Spark rightClaw;
 	
-	//public static String gameData;
-	
 	public static DifferentialDrive diffdrive;
 
-	public static DoubleSolenoid clawSolenoid;
-
+	public static DoubleSolenoid LGripper;
+	public static DoubleSolenoid RGripper;
 	public static DoubleSolenoid Lplatform;
 	public static DoubleSolenoid Rplatform;
 
 	public static void init()
 	{
-		//gameData = 
 		//talon1 = new TalonSRX(talon1Intake);
 		//talon2 = new TalonSRX(talon2Intake);
 		linear = new VictorSP(victorLinear);
@@ -88,17 +77,17 @@ public class RobotMap {
 		diffdrive = new DifferentialDrive(leftDrive,rightDrive);
 		intakeleft = new VictorSP(intakeLeftSpot);
 		intakeright = new VictorSP(intakeRightSpot);
-		clawSolenoid = new DoubleSolenoid(solenoid1Spot, solenoid2Spot);
-		
-		Lplatform = new DoubleSolenoid(i, ii);
-		Rplatform = new DoubleSolenoid(j, jj);
 		
 		diffdrive.setSafetyEnabled(false);
 		linear.setSafetyEnabled(false);
 		intakeleft.setSafetyEnabled(false);
 		intakeright.setSafetyEnabled(false);
 
-		
+		Lplatform = new DoubleSolenoid(LPlatformFwdPort, LPlatformBkwdPort);
+		Rplatform = new DoubleSolenoid(RPlatformFwdPort, RPlatformBkwdPort);
+		LGripper = new DoubleSolenoid(LGripperFwdPort, LGripperBkwdPort);
+		RGripper = new DoubleSolenoid(RGripperFwdPort, RGripperBkwdPort);
+
 		//drop1 = new VictorSP(drop1spot);
 		//drop2 = new VictorSP(drop2spot);
 	}
