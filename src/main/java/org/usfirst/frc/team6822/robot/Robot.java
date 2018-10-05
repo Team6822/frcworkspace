@@ -81,7 +81,8 @@ public static OI m_oi;
 		m_linearslide = new LinearSlide();
 		m_drivetrain = new DriveTrain();
 		m_claws = new Claws();
-		m_pneumatics = new Pneumatics();
+        m_pneumatics = new Pneumatics();
+        m_platform = new Platform();
 
 		//m_chooser.addDefault("Default Auto", new AutoCommand());//to be done by Esha
 		// chooser.addObject("My Auto", new MyAutoCommand());
