@@ -165,6 +165,7 @@ public class Robot extends TimedRobot
 
 		//String gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
+		// need to hardcode before each match (cannot modify ds location at competition)
 		int LOCATION = DriverStation.getInstance().getLocation();
 		//location 1=left 2=center 3=right
 		
@@ -230,10 +231,13 @@ public class Robot extends TimedRobot
 			if(gameData.length() > 0)
 			{
 				
-				if(LOCATION==1)//LEFT
+				if(LOCATION == 1)//LEFT
 				{
 					if(gameData.charAt(0) == 'L')
 					{
+						// 14 feet forward, ~2 feet down (go up 1 foot first then go down 3 feet fastish)
+						//routine.addSequential(new AutoDriveControl(0.4, 0, true, 3000));
+						//routine.start();
 						
 						routine.addParallel(new AutoLinear(0.5,1000));
 						routine.addSequential(new AutoDriveControl(0.4,SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length1", 1000)));
@@ -241,6 +245,7 @@ public class Robot extends TimedRobot
 	
 						//routine.addSequential(new AutoIntake(false,500));
 						routine.start();
+						
 						
 					}
 					else 

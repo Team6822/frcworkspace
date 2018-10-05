@@ -24,24 +24,24 @@ public class RobotMap {
 	public static int talon1Intake = 1;
 	//public static int talon2Intake = 2;
 	//PWM
-	public static int victorLinear = 3;
+	public static int victorLinear = 7;
 	//public static int victorClimber = 5;
-	public static int sparkLeft = 1;
-	public static int sparkRight = 0;
-	public static int intakeLeftSpot = 2;
-	public static int intakeRightSpot = 9;
+	public static int sparkLeft = 9;
+	public static int sparkRight = 8;
+	//public static int intakeLeftSpot = 2;
+	//public static int intakeRightSpot = 9;
 	public static int leftClawSpot = 4;
 	public static int rightClawSpot = 5;
 
 	//Solenoids
-	public static int LPlatformFwdPort = 1;
-	public static int LPlatformBkwdPort = 2;
-	public static int RPlatformFwdPort = 3;
-	public static int RPlatformBkwdPort = 4;
-	public static int LGripperFwdPort = 5;
-	public static int LGripperBkwdPort = 6;
-	public static int RGripperFwdPort = 7;
-	public static int RGripperBkwdPort = 8;
+	public static int LPlatformFwdPort = 0;
+	public static int LPlatformBkwdPort = 1;
+	public static int RPlatformFwdPort = 2;
+	public static int RPlatformBkwdPort = 3;
+	public static int LGripperFwdPort = 4;
+	public static int LGripperBkwdPort = 5;
+	public static int RGripperFwdPort = 6;
+	public static int RGripperBkwdPort = 7;
 	
 	//motors
 	//public static TalonSRX talon2;
@@ -75,13 +75,13 @@ public class RobotMap {
 		leftClaw = new Spark(leftClawSpot);
 		rightClaw = new Spark(rightClawSpot);
 		diffdrive = new DifferentialDrive(leftDrive,rightDrive);
-		intakeleft = new VictorSP(intakeLeftSpot);
-		intakeright = new VictorSP(intakeRightSpot);
+		//intakeleft = new VictorSP(intakeLeftSpot);
+		//intakeright = new VictorSP(intakeRightSpot);
 		
 		diffdrive.setSafetyEnabled(false);
 		linear.setSafetyEnabled(false);
-		intakeleft.setSafetyEnabled(false);
-		intakeright.setSafetyEnabled(false);
+		//intakeleft.setSafetyEnabled(false);
+		//intakeright.setSafetyEnabled(false);
 
 		Lplatform = new DoubleSolenoid(LPlatformFwdPort, LPlatformBkwdPort);
 		Rplatform = new DoubleSolenoid(RPlatformFwdPort, RPlatformBkwdPort);
