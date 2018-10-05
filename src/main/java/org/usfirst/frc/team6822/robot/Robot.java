@@ -239,7 +239,7 @@ public class Robot extends TimedRobot
 						routine.addSequential(new AutoDriveControl(0.4,SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length1", 1000)));
 						routine.addSequential(new AutoDriveControl(0.4,-SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length2", 500)));
 	
-						routine.addSequential(new AutoIntake(false,500));
+						//routine.addSequential(new AutoIntake(false,500));
 						routine.start();
 						
 					}
@@ -263,7 +263,7 @@ public class Robot extends TimedRobot
 						routine.addSequential(new AutoDriveControl(0.4,-0.5,true,(long) SmartDashboard.getNumber("Length1", 500)));
 						routine.addSequential(new AutoDriveControl(0.5,0.1,true,(long) SmartDashboard.getNumber("Length2", 500)));
 	
-						routine.addSequential(new AutoIntake(false,1000));
+						//routine.addSequential(new AutoIntake(false,1000));
 						routine.start();
 						
 					}
@@ -274,7 +274,7 @@ public class Robot extends TimedRobot
 						//routine.addSequential(new AutoDriveControl(0.4,0.2,true,1000));
 						routine.addSequential(new AutoDriveControl(0.4,0.03,true,1000));
 						routine.addSequential(new AutoDriveControl(0.4,-0.03,true,1000));
-						routine.addSequential(new AutoIntake(false,1000));
+						//routine.addSequential(new AutoIntake(false,1000));
 						routine.start();
 					}
 				}
@@ -296,7 +296,7 @@ public class Robot extends TimedRobot
 						routine.addSequential(new AutoDriveControl(0.4,-SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length1", 1000)));
 						routine.addSequential(new AutoDriveControl(0.4,SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length2", 500)));
 	
-						routine.addSequential(new AutoIntake(false,500));
+						//routine.addSequential(new AutoIntake(false,500));
 						routine.start();
 					}
 				}
