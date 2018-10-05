@@ -34,14 +34,14 @@ public class RobotMap {
 	public static int rightClawSpot = 5;
 
 	//Solenoids
-	public static int LPlatformFwdPort = 1;
-	public static int LPlatformBkwdPort = 2;
-	public static int RPlatformFwdPort = 3;
-	public static int RPlatformBkwdPort = 4;
-	public static int LGripperFwdPort = 5;
-	public static int LGripperBkwdPort = 6;
-	public static int RGripperFwdPort = 7;
-	public static int RGripperBkwdPort = 8;
+	public static int LPlatformFwdPort = 0;
+	public static int LPlatformBkwdPort = 1;
+	public static int RPlatformFwdPort = 2;
+	public static int RPlatformBkwdPort = 3;
+	public static int LGripperFwdPort = 4;
+	public static int LGripperBkwdPort = 5;
+	public static int RGripperFwdPort = 6;
+	public static int RGripperBkwdPort = 7;
 	
 	//motors
 	//public static TalonSRX talon2;
