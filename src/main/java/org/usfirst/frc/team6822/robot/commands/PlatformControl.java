@@ -2,8 +2,6 @@ package org.usfirst.frc.team6822.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team6822.robot.Robot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 /**
  *
@@ -17,15 +15,15 @@ public class PlatformControl extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    		Robot.m_platform.setState("Off");
+    	Robot.m_platform.setState("Off");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if(Robot.m_oi.platbutt.get())
-        {
+        if(Robot.m_oi.platformForward.get()){
             Robot.m_platform.setState("Forward");
-        }else {
+        }
+        else if(Robot.m_oi.platformBack.get()){
             Robot.m_platform.setState("Reverse");
         }
     }
