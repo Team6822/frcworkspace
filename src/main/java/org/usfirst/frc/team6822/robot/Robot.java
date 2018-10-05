@@ -236,32 +236,43 @@ public class Robot extends TimedRobot
 					if(gameData.charAt(0) == 'L')
 					{
 						// 14 feet forward, ~2 feet down (go up 1 foot first then go down 3 feet fastish)
-						//routine.addSequential(new AutoDriveControl(0.4, 0, true, 3000));
-						//routine.start();
+						//turning is to adjust for motor auto turning (although its not adjusted properly)
+						//this is not doing jank auto yet
+						routine.addSequential(new AutoDriveControl(0.6, -0.05, true, 1500));
+						routine.start();
 						
+						/*
 						routine.addParallel(new AutoLinear(0.5,1000));
 						routine.addSequential(new AutoDriveControl(0.4,SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length1", 1000)));
 						routine.addSequential(new AutoDriveControl(0.4,-SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length2", 500)));
-	
+						
+
 						//routine.addSequential(new AutoIntake(false,500));
 						routine.start();
+						*/
 						
 						
 					}
-					else 
+					else
 					{
+						routine.addSequential(new AutoDriveControl(0.6, -0.05, true, 1500));
+						routine.start();
+						/*
 						//CommandGroup routine = new CommandGroup();
 						routine.addParallel(new AutoLinear(0.8,2000));
 						routine.addSequential(new AutoDriveControl(0.5,-0.15,true,1500));
 						routine.addSequential(new AutoDriveControl(0.5,0.1,true,2000));
 						routine.start();
+						*/
 					}
 				}
 				else if(LOCATION==2) //central
 				{
 					if(gameData.charAt(0) == 'L')
 					{
-						
+						routine.addSequential(new AutoDriveControl(0.6, 0.07, true, 1500));
+						routine.start();
+						/*
 						//CommandGroup routine = new CommandGroup();
 						routine.addParallel(new AutoLinear(0.5,1000));
 						routine.addSequential(new AutoDriveControl(0.4,0,true,500));
@@ -270,10 +281,14 @@ public class Robot extends TimedRobot
 	
 						//routine.addSequential(new AutoIntake(false,1000));
 						routine.start();
+						*/
 						
 					}
 					else 
 					{
+						routine.addSequential(new AutoDriveControl(0.6, 0.07, true, 1500));
+						routine.start();
+						/*
 						//CommandGroup routine = new CommandGroup();
 						//routine.addParallel(new AutoLinear(0.8,2000));
 						//routine.addSequential(new AutoDriveControl(0.4,0.2,true,1000));
@@ -281,21 +296,29 @@ public class Robot extends TimedRobot
 						routine.addSequential(new AutoDriveControl(0.4,-0.03,true,1000));
 						//routine.addSequential(new AutoIntake(false,1000));
 						routine.start();
+						*/
 					}
 				}
 				else if(LOCATION==3) //right
 				{
 					if(gameData.charAt(0) == 'L')
 					{
+						routine.addSequential(new AutoDriveControl(0.6, -0.05, true, 1500));
+						routine.start();
+						/*
 						//CommandGroup routine = new CommandGroup();
 						routine.addParallel(new AutoLinear(0.8,2000));
 						routine.addSequential(new AutoDriveControl(0.5,0.15,true,1500));
 						routine.addSequential(new AutoDriveControl(0.5,-0.1,true,2000));
 						routine.start();
+						*/
 						
 					}
 					else 
 					{
+						routine.addSequential(new AutoDriveControl(0.6, -0.05, true, 1500));
+						routine.start();
+						/*
 						//CommandGroup routine = new CommandGroup();
 						routine.addParallel(new AutoLinear(0.5,1000));
 						routine.addSequential(new AutoDriveControl(0.4,-SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length1", 1000)));
@@ -303,6 +326,7 @@ public class Robot extends TimedRobot
 	
 						//routine.addSequential(new AutoIntake(false,500));
 						routine.start();
+						*/
 					}
 				}
 			
