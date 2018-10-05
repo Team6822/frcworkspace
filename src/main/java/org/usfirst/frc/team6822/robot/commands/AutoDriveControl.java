@@ -12,13 +12,15 @@ public class AutoDriveControl extends Command {
 	double move;
 	double curve;
 	boolean fast;
-	long timeMillis;
+    long timeMillis;
+    
     public AutoDriveControl(double move, double curve, boolean fast, long timeMillis)
     {
     	this.move = move;
     	this.curve = curve;
-    	this.fast=fast;
-    	this.timeMillis=timeMillis+System.currentTimeMillis();
+    	this.fast = fast;
+        this.timeMillis = timeMillis+System.currentTimeMillis();
+        
         requires(Robot.m_drivetrain);
     }
 

@@ -5,6 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+/*
+This is the Robot.java after October 4 commit, but with commented code removed for clarity.
+Don't delete the current (old) robot.java though, commented code might be useful later. Also some of the comment code might
+need to be uncommented right now.
+*/
+
 package org.usfirst.frc.team6822.robot;
 
 import java.io.BufferedReader;
@@ -13,21 +19,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-// import org.usfirst.frc.team6822.robot.commands.AutoDriveControl;
-// import org.usfirst.frc.team6822.robot.commands.AutoIntake;
-// import org.usfirst.frc.team6822.robot.commands.AutoLinear;
-// import org.usfirst.frc.team6822.robot.commands.LinearSlideControl;
-// import org.usfirst.frc.team6822.robot.commands.TeleOpCommands;
-// import org.usfirst.frc.team6822.robot.subsystems.Claws;
-// import org.usfirst.frc.team6822.robot.subsystems.DriveTrain;
-// import org.usfirst.frc.team6822.robot.subsystems.Intake;
-// import org.usfirst.frc.team6822.robot.subsystems.LinearSlide;
-
 import org.usfirst.frc.team6822.robot.commands.*;
 import org.usfirst.frc.team6822.robot.subsystems.*;
 
 import edu.wpi.cscore.UsbCamera;
-import edu.wpi.cscore.VideoMode;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -45,7 +40,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 
-public class Robot extends TimedRobot 
+public class NewRobot extends TimedRobot 
 {
     public static OI m_oi;
 	public static Intake m_intake;
@@ -67,16 +62,6 @@ public class Robot extends TimedRobot
         
 		UsbCamera theCamera = CameraServer.getInstance().startAutomaticCapture();
 		theCamera.setVideoMode(theCamera.enumerateVideoModes()[101]);
-        
-        /*
-        int i = 0;
-		for(VideoMode vm : theCamera.enumerateVideoModes())
-		{
-			System.out.println((i++)+": "+vm.fps+" "+vm.height+" "+vm.width);
-		}*/
-		//theCamera.setVideoMode(VideoMode.)
-		
-		//CameraServer.getInstance().
 
 		m_oi = new OI();
 		m_intake = new Intake();
@@ -85,11 +70,6 @@ public class Robot extends TimedRobot
         m_claws = new Claws();
         m_platform = new Platform();
         m_gripper = new Gripper();
-
-		//m_chooser.addDefault("Default Auto", new AutoCommand());//to be done by Esha
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		//SmartDashboard.putData("Auto mode", m_chooser)
-		
 	}
 
 	/**
@@ -122,36 +102,16 @@ public class Robot extends TimedRobot
 	double[][] loadedAction = new double[1000][8];
 	@Override
 	public void autonomousInit() {
-		//m_autonomousCommand = m_chooser.getSelected();
+		boolean isSimple = true;
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
         
-        /*
-		boolean isSimple = true;
+        
         if(isSimple)
-		{  
+		{
 			CommandGroup routine = new CommandGroup();
-			//routine.addSequential(new AutoDriveControl(0.45,-0.08,true,1500));
-			//routine.addParallel(new AutoLinear(0.3,700));
 			routine.addSequential(new AutoDriveControl(0.5,0.00,true,2000));
-			//routine.addParallel(new AutoLinear(-0.3,500));
 			
 			routine.start();
-            
-            //start comment block
-            if(gameData.charAt(0)=='L')
-			{
-				CommandGroup routine = new CommandGroup();
-				routine.addParallel(new AutoLinear(0.3,1000));
-				routine.addSequential(new AutoDriveControl(0.6,0.00,true,2500));
-				routine.start();
-			}
-			else
-			{
-				CommandGroup routine = new CommandGroup();
-				routine.addSequential(new AutoDriveControl(0.45,-0.08,true,1500));
-				routine.addSequential(new AutoDriveControl(0.45,0.00,true,2500));
-				routine.start();
-			} //end comment block
 			if(isSimple)
 			{
 				return;
@@ -160,16 +120,11 @@ public class Robot extends TimedRobot
 		else
 		{
 			return;
-        }
-        */
-
-		//String gameData = DriverStation.getInstance().getGameSpecificMessage();
+		}
 		
 		int LOCATION = DriverStation.getInstance().getLocation();
-		//location 1=left 2=center 3=right
-		
-		long timeSlideUpSwitch = 1000;
-		double voltageSlideUpSwitch = -0.5;
+        //location 1=left 2=center 3=right
+        
 		if(!SmartDashboard.containsKey("Length1"))
 		{
 			SmartDashboard.putNumber("Length1", 1000);
@@ -184,19 +139,20 @@ public class Robot extends TimedRobot
 		}
 		
 		
-		
+		int position = LOCATION-1;
+		boolean isOnRight = gameData.charAt(0)=='R';
+		if(isOnRight)
+		{
+			position+=3;
+		}
 		boolean isStupid = false;
-		if(isStupid)//stupid plan
+        //possibly delete the "stupid plan" (record autonomous) section from NewRobot.java (this file) if it is not being used
+        //again, don't delete anything from Robot.java
+        if(isStupid)//stupid plan
 		{
 			/*
 			Record commands beforehand and run them
-            */
-            int position = LOCATION-1;
-            boolean isOnRight = gameData.charAt(0)=='R';
-            if(isOnRight)
-            {
-                position+=3;
-            }
+			*/
 			try {
 				BufferedReader bR = new BufferedReader(new FileReader("/home/lvuser/recorded."+position));
 				String readingTemp;
@@ -219,14 +175,6 @@ public class Robot extends TimedRobot
 		else
 		{
 			CommandGroup routine = new CommandGroup();
-			
-			//System.out.println(m_autonomousCommand.getName());
-			/*double time = System.currentTimeMillis();
-			while (System.currentTimeMillis() - time < 2000) 
-			{
-				Robot.m_drivetrain.move(0.5, 0.5);
-			}*/
-			//System.out.println(gameData);
 			if(gameData.length() > 0)
 			{
 				
@@ -239,7 +187,7 @@ public class Robot extends TimedRobot
 						routine.addSequential(new AutoDriveControl(0.4,SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length1", 1000)));
 						routine.addSequential(new AutoDriveControl(0.4,-SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length2", 500)));
 	
-						//routine.addSequential(new AutoIntake(false,500));
+						routine.addSequential(new AutoIntake(false,500));
 						routine.start();
 						
 					}
@@ -256,25 +204,20 @@ public class Robot extends TimedRobot
 				{
 					if(gameData.charAt(0) == 'L')
 					{
-						
-						//CommandGroup routine = new CommandGroup();
 						routine.addParallel(new AutoLinear(0.5,1000));
 						routine.addSequential(new AutoDriveControl(0.4,0,true,500));
 						routine.addSequential(new AutoDriveControl(0.4,-0.5,true,(long) SmartDashboard.getNumber("Length1", 500)));
 						routine.addSequential(new AutoDriveControl(0.5,0.1,true,(long) SmartDashboard.getNumber("Length2", 500)));
 	
-						//routine.addSequential(new AutoIntake(false,1000));
+						routine.addSequential(new AutoIntake(false,1000));
 						routine.start();
 						
 					}
 					else 
 					{
-						//CommandGroup routine = new CommandGroup();
-						//routine.addParallel(new AutoLinear(0.8,2000));
-						//routine.addSequential(new AutoDriveControl(0.4,0.2,true,1000));
 						routine.addSequential(new AutoDriveControl(0.4,0.03,true,1000));
 						routine.addSequential(new AutoDriveControl(0.4,-0.03,true,1000));
-						//routine.addSequential(new AutoIntake(false,1000));
+						routine.addSequential(new AutoIntake(false,1000));
 						routine.start();
 					}
 				}
@@ -296,59 +239,15 @@ public class Robot extends TimedRobot
 						routine.addSequential(new AutoDriveControl(0.4,-SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length1", 1000)));
 						routine.addSequential(new AutoDriveControl(0.4,SmartDashboard.getNumber("Angle", 0.05),true,(long) SmartDashboard.getNumber("Length2", 500)));
 	
-						//routine.addSequential(new AutoIntake(false,500));
+						routine.addSequential(new AutoIntake(false,500));
 						routine.start();
 					}
 				}
-			
-				/*
-				double time = System.currentTimeMillis();
-				if(RobotMap.gameData.charAt(0) == 'R')
-				{
-					while (System.currentTimeMillis() - time < 5000) 
-					{
-						Robot.m_drivetrain.move(0.5, 0.5);
-						if(System.currentTimeMillis() - time < 1000)
-						{
-							Robot.m_linearslide.move(0.5);
-						}
-						[
-			    		Robot.m_drivetrain.moveWithCurve(0.5, -90, true);
-					}
-					
-					while (System.currentTimeMillis() - time < 2000) 
-					{
-						Robot.m_drivetrain.move(0.5, 0.5);
-					}
-					while (System.currentTimeMillis() - time < 2000) 
-					{
-						Robot.m_intake.moveMotors(-0.5);
-					}
-				}
-				else 
-				{
-					while (System.currentTimeMillis() - time > 5000) 
-					{
-						Robot.m_drivetrain.move(0.5, 0.5);
-					}
-				}*/
 			}
 			else
 			{
 				System.out.println("PLEASE SPECIFY GAMEDATA");
 			}
-			/*RobotMap.gameData = "";
-			while(RobotMap.gameData.length() < 3) 
-			{
-				try {
-				RobotMap.gameData = DriverStation.getInstance().getGameSpecificMessage();
-				}
-				catch (Exception E) {}
-				if (m_autonomousCommand != null) 
-				{
-					m_autonomousCommand.start();
-				}
-			}*/
 		}
 	}
 
@@ -404,80 +303,6 @@ public class Robot extends TimedRobot
                 System.out.println(err.toString());
             }
         }
-    	
-    	
-		
-		
-		//left autonomous code do not touchy it's bad
-		/*if(RobotMap.gameData.length() > 0)
-		{
-			double time = System.currentTimeMillis();
-			if(RobotMap.gameData.charAt(0) == 'L')
-			{
-				while (System.currentTimeMillis() - time < 5000) 
-				{
-					Robot.m_drivetrain.move(0.5, 0.5);
-					if(System.currentTimeMillis() - time < 1000)
-					{
-						Robot.m_linearslide.move(0.5);
-					}
-					
-		    		Robot.m_drivetrain.moveWithCurve(0.5, 90, true);
-				}
-				
-				while (System.currentTimeMillis() - time < 2000) 
-				{
-					Robot.m_drivetrain.move(0.5, 0.5);
-				}
-				while (System.currentTimeMillis() - time < 2000) 
-				{
-					Robot.m_intake.moveMotors(-0.5);
-				}
-			}
-			else 
-			{
-				while (System.currentTimeMillis() - time > 5000) 
-				{
-					Robot.m_drivetrain.move(0.5, 0.5);
-				}
-			}
-		}
-		
-		//right autonomous code
-		if(RobotMap.gameData.length() > 0)
-		{
-			double time = System.currentTimeMillis();
-			if(RobotMap.gameData.charAt(0) == 'R')
-			{
-				while (System.currentTimeMillis() - time < 5000) 
-				{
-					Robot.m_drivetrain.move(0.5, 0.5);
-					if(System.currentTimeMillis() - time < 1000)
-					{
-						Robot.m_linearslide.move(0.5);
-					}
-					
-		    		Robot.m_drivetrain.moveWithCurve(0.5, -90, true);
-				}
-				
-				while (System.currentTimeMillis() - time < 2000) 
-				{
-					Robot.m_drivetrain.move(0.5, 0.5);
-				}
-				while (System.currentTimeMilli yufs() - time < 2000) 
-				{
-					Robot.m_intake.moveMotors(-0.5);
-				}
-			}
-			else 
-			{
-				while (System.currentTimeMillis() - time > 5000) 
-				{
-					Robot.m_drivetrain.move(0.5, 0.5);
-				}
-			}
-		}*/
-	
 	}
 	@Override
 	public void teleopInit() {
@@ -536,10 +361,6 @@ public class Robot extends TimedRobot
                     + Robot.m_oi.tensionSlide
                     - 0.2 * Robot.m_oi.joystick.getRawAxis(Robot.m_oi.otherSlideAxis)
                 ) * Robot.m_oi.throttleSlide) + ","
-                // + Robot.m_oi.joystick.getRawAxis(Robot.m_oi.lClawAxis) + ","
-                // + Robot.m_oi.joystick.getRawAxis(Robot.m_oi.rClawAxis) + ","
-                //+ (Robot.m_oi.intakein.get() ? 1.0 : 0.0) + ","
-                //+ (Robot.m_oi.intakeout.get() ? 1.0 : 0.0)
             );
 
 			System.out.println((System.currentTimeMillis() - timeAtZero) + " " + 1000 * 15);
