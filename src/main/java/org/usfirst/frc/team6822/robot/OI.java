@@ -25,15 +25,26 @@ public class OI {
 	// Button button = new JoystickButton(stick, buttonNumber)
 
 	/*
-	Joystick 1:
-	1 = x
-	2 = a
-	3 = b
+	Joystick 0 (primary):
+	Axes:
+	0 = lx
+	1 = ly
+	2 = l trigger
+	3 = r trigger
+	4 = rx
+	5 = ry
+
+	Buttons:
+	1 = a
+	2 = b
+	3 = x
 	4 = y
 	5 = lb
 	6 = rb
-	7 = lt
-	8 = rt
+	7 = dumb
+	8 = also dumb
+	9 = press down/click left joystick
+	10 = press down right joystick
 	*/
 
 	public Joystick xbox = new Joystick(0);
@@ -64,6 +75,7 @@ public class OI {
 	public int otherSlideAxis = 2; // when pressed, moves the slide down
 	public int lClawAxis = 4; // left side claw (note that it is useful to be able to control left and right claws separately)
 	public int rClawAxis = 0; // right side claw
+
 
 	public double throttleBoost = 1.0;
 	public double throttleDrive = 0.45;
