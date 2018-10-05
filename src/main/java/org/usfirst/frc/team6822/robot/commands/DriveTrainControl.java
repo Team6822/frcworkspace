@@ -23,7 +23,9 @@ public class DriveTrainControl extends Command {
     	Robot.m_drivetrain.moveWithCurve(
             (Robot.m_oi.xbox.getRawAxis(Robot.m_oi.rTriggerAxis) - Robot.m_oi.xbox.getRawAxis(Robot.m_oi.lTriggerAxis)) * speed,
             Robot.m_oi.xbox.getRawAxis(Robot.m_oi.turnAxis)
-                * Robot.m_oi.throttleTurn * Math.signum(0.1 + Robot.m_oi.xbox.getRawAxis(Robot.m_oi.rTriggerAxis) - Robot.m_oi.xbox.getRawAxis(Robot.m_oi.lTriggerAxis)), true);
+                * Robot.m_oi.throttleTurn
+                * Math.signum(0.1 + Robot.m_oi.xbox.getRawAxis(Robot.m_oi.rTriggerAxis) - Robot.m_oi.xbox.getRawAxis(Robot.m_oi.lTriggerAxis)),
+            true);
         
         //Robot.m_drivetrain.move(Robot.m_oi.xbox.getRawAxis(Robot.m_oi.leftaxis)*Robot.m_oi.throttleDrive, Robot.m_oi.xbox.getRawAxis(Robot.m_oi.rightaxis)*Robot.m_oi.throttleDrive);
     }
