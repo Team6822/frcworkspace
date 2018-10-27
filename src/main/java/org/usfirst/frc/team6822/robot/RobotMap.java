@@ -34,6 +34,7 @@ public class RobotMap {
 	public static int rightClawSpot = 5;
 
 	//Solenoids
+	/*
 	public static int LPlatformFwdPort = 0;
 	public static int LPlatformBkwdPort = 1;
 	public static int RPlatformFwdPort = 2;
@@ -42,6 +43,10 @@ public class RobotMap {
 	public static int LGripperBkwdPort = 5;
 	public static int RGripperFwdPort = 6;
 	public static int RGripperBkwdPort = 7;
+	*/
+
+	public static int OneGripperPortFwd = 0;
+	public static int OneGripperPortBack = 1;
 	
 	//motors
 	//public static TalonSRX talon2;
@@ -61,6 +66,7 @@ public class RobotMap {
 	public static DoubleSolenoid RGripper;
 	public static DoubleSolenoid Lplatform;
 	public static DoubleSolenoid Rplatform;
+	public static DoubleSolenoid OneGripper;
 
 	public static void init()
 	{
@@ -83,10 +89,13 @@ public class RobotMap {
 		//intakeleft.setSafetyEnabled(false);
 		//intakeright.setSafetyEnabled(false);
 
+		OneGripper = new DoubleSolenoid(OneGripperPortFwd, OneGripperPortBack);
+		/*
 		Lplatform = new DoubleSolenoid(LPlatformFwdPort, LPlatformBkwdPort);
 		Rplatform = new DoubleSolenoid(RPlatformFwdPort, RPlatformBkwdPort);
 		LGripper = new DoubleSolenoid(LGripperFwdPort, LGripperBkwdPort);
 		RGripper = new DoubleSolenoid(RGripperFwdPort, RGripperBkwdPort);
+		*/
 
 		//drop1 = new VictorSP(drop1spot);
 		//drop2 = new VictorSP(drop2spot);

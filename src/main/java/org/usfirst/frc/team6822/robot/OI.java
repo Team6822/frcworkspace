@@ -98,8 +98,8 @@ public class OI {
 	public double throttleIntakeClawOut = -0.9;
 	public double throttleIntakeClawIn = -0.9;
 	
-	public double tensionSlide = 0.05; //helps maintain the tension in the slide
-	
+	public double tensionSlide = 0.15; //helps maintain the tension in the slide
+	//tensionSlide is 0.15 with the pneumatics, 0.05 without
 	
 	
 	// There are a few additional built in buttons you can use. Additionally,

@@ -19,8 +19,11 @@ public class Gripper extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
+  /*
     public DoubleSolenoid LGripper = RobotMap.RGripper;
-	public DoubleSolenoid RGripper = RobotMap.LGripper;
+    public DoubleSolenoid RGripper = RobotMap.LGripper;
+    */
+    public DoubleSolenoid Gripper = RobotMap.OneGripper;
 
     @Override
     public void initDefaultCommand() {
@@ -30,16 +33,19 @@ public class Gripper extends Subsystem {
 
     public void setState(String state){
         if(state == "Off"){
-            LGripper.set(DoubleSolenoid.Value.kOff);
-            RGripper.set(DoubleSolenoid.Value.kOff);
+            Gripper.set(DoubleSolenoid.Value.kOff);
+            //LGripper.set(DoubleSolenoid.Value.kOff);
+            //RGripper.set(DoubleSolenoid.Value.kOff);
         }
         else if(state == "Close"){
-            LGripper.set(DoubleSolenoid.Value.kForward);
-            RGripper.set(DoubleSolenoid.Value.kForward);
+            Gripper.set(DoubleSolenoid.Value.kForward);
+            //LGripper.set(DoubleSolenoid.Value.kForward);
+            //RGripper.set(DoubleSolenoid.Value.kForward);
         }
         else if(state == "Open"){
-            LGripper.set(DoubleSolenoid.Value.kReverse);
-            RGripper.set(DoubleSolenoid.Value.kReverse);
+            Gripper.set(DoubleSolenoid.Value.kReverse);
+            //LGripper.set(DoubleSolenoid.Value.kReverse);
+            //RGripper.set(DoubleSolenoid.Value.kReverse);
         }
     }
 }

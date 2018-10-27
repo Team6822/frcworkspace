@@ -83,7 +83,7 @@ public class Robot extends TimedRobot
 		m_linearslide = new LinearSlide();
 		m_drivetrain = new DriveTrain();
         m_claws = new Claws();
-        m_platform = new Platform();
+        //m_platform = new Platform();
         m_gripper = new Gripper();
 
 		//m_chooser.addDefault("Default Auto", new AutoCommand());//to be done by Esha
@@ -125,19 +125,58 @@ public class Robot extends TimedRobot
 		//m_autonomousCommand = m_chooser.getSelected();
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
         
-        /*
+        
 		boolean isSimple = true;
         if(isSimple)
 		{  
-			CommandGroup routine = new CommandGroup();
+			//CommandGroup routine = new CommandGroup();
 			//routine.addSequential(new AutoDriveControl(0.45,-0.08,true,1500));
 			//routine.addParallel(new AutoLinear(0.3,700));
-			routine.addSequential(new AutoDriveControl(0.5,0.00,true,2000));
+			//routine.addSequential(new AutoDriveControl(0.5,0.00,true,2000));
 			//routine.addParallel(new AutoLinear(-0.3,500));
 			
-			routine.start();
-            
-            //start comment block
+			//routine.start();
+			
+			int LOCATION = 1; //1 is L, 2 is M, 3 is R
+			CommandGroup routine = new CommandGroup();
+			if(LOCATION == 1){
+				if(gameData.charAt(0) == 'L'){
+					//routine.addParallel(new AutoLinear(0.3,1000));
+					routine.addSequential(new AutoDriveControl(0.45,0.2,true,1000));
+					routine.addSequential(new AutoDriveControl(0.6,-0.06,true,2000));
+					routine.start();
+				}
+				else{
+					routine.addSequential(new AutoDriveControl(0.5,-0.1,true,2000));
+					//routine.addSequential(new AutoDriveControl(0.45,0.08,true,2000));
+					routine.start();
+				}
+			}
+			else if (LOCATION == 2){
+				//routine.addParallel(new AutoLinear(0.3,1000));
+				routine.addSequential(new AutoDriveControl(0.6,0.00,true,2000));
+				routine.start();
+			}
+			else{
+				//0.8 for 2.5s goes too far (cross into null)
+				routine.addSequential(new AutoDriveControl(0.6, 0, true, 2000));
+				routine.start();
+				
+				if(gameData.charAt(0) == 'R'){
+					//routine.addParallel(new AutoLinear(0.3,1000));
+					
+					routine.addSequential(new AutoDriveControl(0.45,-0.1,true,1000));
+					routine.addSequential(new AutoDriveControl(0.6,0.06,true,2000));
+					routine.start();
+				}
+				else{
+					
+					routine.addSequential(new AutoDriveControl(0.5,0.1,true,2000));
+					routine.start();
+				}
+				
+			}
+			/*
             if(gameData.charAt(0)=='L')
 			{
 				CommandGroup routine = new CommandGroup();
@@ -151,7 +190,8 @@ public class Robot extends TimedRobot
 				routine.addSequential(new AutoDriveControl(0.45,-0.08,true,1500));
 				routine.addSequential(new AutoDriveControl(0.45,0.00,true,2500));
 				routine.start();
-			} //end comment block
+			}
+			*/
 			if(isSimple)
 			{
 				return;
@@ -161,12 +201,13 @@ public class Robot extends TimedRobot
 		{
 			return;
         }
-        */
+        
 
 		//String gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
 		// need to hardcode before each match (cannot modify ds location at competition)
-		int LOCATION = DriverStation.getInstance().getLocation();
+		//int LOCATION = DriverStation.getInstance().getLocation();
+		int LOCATION = 2;
 		//location 1=left 2=center 3=right
 		
 		long timeSlideUpSwitch = 1000;
