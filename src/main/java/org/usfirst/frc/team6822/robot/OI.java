@@ -70,7 +70,7 @@ public class OI {
     //public Button gripperButton = new JoystickButton(joystick, 4); // also unsure if open port
     
 
-    /*public Button slideup = new JoystickButton(joystick,6);
+	/*public Button slideup = new JoystickButton(joystick,6);
 	public Button slidedown = new JoystickButton(joystick,4);*/
 	
 	//public int leftaxis = 1;
