@@ -7,12 +7,15 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SampleRobot;
 import edu.wpi.first.wpilibj.Timer;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 public class Encoder {
 
-    public  frontLeft = new TalonSRX(0);
-    public  backLeft = new VictorSP(1);
-    public  frontRight = new TalonSRX(2);
-    public  backRight = new VictorSP(3);
+    public TalonSRX frontLeft = new TalonSRX(0);
+    public VictorSPX backLeft = new VictorSPX(1);
+    public TalonSRX frontRight = new TalonSRX(2);
+    public VictorSPX backRight = new VictorSPX(3);
     private RobotDrive myRobot = new RobotDrive(frontLeft, backLeft, frontRight, backRight); // robot drive system
     
     

@@ -2,8 +2,9 @@ import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.Waypoint;
 import jaci.pathfinder.modifiers.TankModifier;
+import org.usfirst.frc.team6822.robot.Encoder;
 
-public class Tank {
+public class TankPathfinder {
 
     public static void main(String[] args) {
         Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.05, 1.7, 2.0, 60.0);
