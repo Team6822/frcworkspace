@@ -45,32 +45,20 @@ public class OI {
 	8 = also dumb
 	9 = press down/click left joystick
 	10 = press down right joystick
-    */
-    
-    /*
-    Joystick 1 (secondary):
-    All same but 1 is x, 2 a, 3 b, 4 y
-    */
-    //5 is in and 6 is out (platform)
-    //1 is grip and 3 is release (gripper)
+	*/
 
 	public Joystick xbox = new Joystick(0);
 	public Button boost = new JoystickButton(xbox,6);
 
-	public Joystick joystick = new Joystick(1); //also an xbox
-	//public Button intakein = new JoystickButton(joystick, 5);
-	//public Button intakeout = new JoystickButton(joystick, 6);
-    public Button gripperClose = new JoystickButton(joystick, 1);
-    public Button gripperOpen = new JoystickButton(joystick, 3);
-    public Button platformBack = new JoystickButton(joystick, 5);
-    public Button platformForward = new JoystickButton(joystick, 6);
-
-    //public Button unthrottleclaw = new JoystickButton(joystick,2);
-    //public Button platbutt = new JoystickButton(joystick, 3); // unsure if this is an open port, need to remap
-    //public Button gripperButton = new JoystickButton(joystick, 4); // also unsure if open port
+	public Joystick joystick = new Joystick(1);//also an xbox
+	public Button intakein = new JoystickButton(joystick, 5);
+	public Button intakeout = new JoystickButton(joystick,6);
+	public Button unthrottleclaw = new JoystickButton(joystick,2);
+    public Button platbutt = new JoystickButton(joystick, 3); // unsure if this is an open port, need to remap
+    public Button gripperButton = new JoystickButton(joystick, 4); // also unsure if open port
     
-
-	/*public Button slideup = new JoystickButton(joystick,6);
+    
+    /*public Button slideup = new JoystickButton(joystick,6);
 	public Button slidedown = new JoystickButton(joystick,4);*/
 	
 	//public int leftaxis = 1;
@@ -85,8 +73,8 @@ public class OI {
 	//joystick 1 mappings:
 	public int slideAxis = 3; // when pressed, moves the slide up (it's a button, not joystick)
 	public int otherSlideAxis = 2; // when pressed, moves the slide down
-	//public int lClawAxis = 4; // left side claw (note that it is useful to be able to control left and right claws separately)
-	//public int rClawAxis = 0; // right side claw
+	public int lClawAxis = 4; // left side claw (note that it is useful to be able to control left and right claws separately)
+	public int rClawAxis = 0; // right side claw
 
 
 	public double throttleBoost = 1.0;
@@ -98,8 +86,8 @@ public class OI {
 	public double throttleIntakeClawOut = -0.9;
 	public double throttleIntakeClawIn = -0.9;
 	
-	public double tensionSlide = 0.15; //helps maintain the tension in the slide
-	//tensionSlide is 0.15 with the pneumatics, 0.05 without
+	public double tensionSlide = 0.05; //helps maintain the tension in the slide
+	
 	
 	
 	// There are a few additional built in buttons you can use. Additionally,

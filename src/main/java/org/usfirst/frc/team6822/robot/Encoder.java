@@ -9,10 +9,10 @@ import edu.wpi.first.wpilibj.SampleRobot;
 import edu.wpi.first.wpilibj.Timer;
 public class Encoder {
 
-    public  frontLeft = new Jaguar(0);
-    public  backLeft = new Jaguar(1);
-    public  frontRight = new Jaguar(2);
-    public  backRight = new Jaguar(3);
+    public  frontLeft = new TalonSRX(0);
+    public  backLeft = new VictorSP(1);
+    public  frontRight = new TalonSRX(2);
+    public  backRight = new VictorSP(3);
     private RobotDrive myRobot = new RobotDrive(frontLeft, backLeft, frontRight, backRight); // robot drive system
     
     
