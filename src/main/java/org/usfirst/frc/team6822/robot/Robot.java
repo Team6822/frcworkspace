@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team6822.robot;
 
+import org.usfirst.frc.team6822.grip.MyVisionPipeline;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -25,6 +27,8 @@ import java.io.PrintWriter;
 
 import org.usfirst.frc.team6822.robot.commands.*;
 import org.usfirst.frc.team6822.robot.subsystems.*;
+import org.opencv.core.Rect;
+import org.opencv.imgproc.Imgproc;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoMode;
@@ -36,7 +40,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import edu.wpi.first.wpilibj.vision.VisionRunner;
+import edu.wpi.first.wpilibj.vision.VisionThread;
+import edu.wpi.first.wpilibj.RobotDrive;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -67,6 +73,23 @@ public class Robot extends TimedRobot
         
 		UsbCamera theCamera = CameraServer.getInstance().startAutomaticCapture();
 		theCamera.setVideoMode(theCamera.enumerateVideoModes()[101]);
+		public void robotInit() {
+    		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+    		camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+    
+    visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
+        if (!pipeline.filterContoursOutput().isEmpty()) {
+            Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+            synchronized (imgLock) {
+                centerX = r.x + (r.width / 2);
+            }
+        }
+    });
+    visionThread.start();
+        
+    drive = new RobotDrive(1, 2);
+}
+
         
         /*
         int i = 0;
